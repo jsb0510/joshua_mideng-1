@@ -5,16 +5,57 @@ import Link from 'next/link';
 const DECK_KEY = 'fc_deck_v1';
 const PROGRESS_KEY = 'fc_progress_v1';
 
-const SAMPLE_TEXT = `abandon | 버리다, 포기하다 | They had to abandon the car in the snow.
-reluctant | 꺼리는, 마지못한 | She was reluctant to admit her mistake.
-consequence | 결과, 영향 | Every choice has a consequence.
-inevitable | 피할 수 없는, 필연적인 | Change is inevitable in any organization.
-sustain | 유지하다, 지속하다 | It is hard to sustain motivation for a long time.
-diligent | 성실한, 부지런한 | He is a diligent student who never misses class.
-obscure | 모호한, 잘 알려지지 않은 | The meaning of the poem is obscure.
-contribute | 기여하다, 공헌하다 | Everyone contributed ideas to the project.
-anxiety | 불안, 걱정 | Exercise can reduce anxiety and stress.
-humble | 겸손한 | Despite his success, he remained humble.`;
+// 중3 수준 예시 단어 50개
+const SAMPLE_TEXT = `achieve | 이루다, 성취하다 | She worked hard to achieve her goal.
+advice | 조언, 충고 | My teacher gave me good advice about my future.
+allow | 허락하다 | My parents allow me to play games on weekends.
+anxious | 불안해하는, 걱정하는 | I felt anxious before the final exam.
+appreciate | 감사하다, 진가를 알다 | I really appreciate your help.
+avoid | 피하다 | You should avoid eating too much fast food.
+behavior | 행동 | His behavior in class has improved a lot.
+brave | 용감한 | The brave firefighter saved the child.
+citizen | 시민 | Every citizen has the right to vote.
+compare | 비교하다 | Don't compare yourself with others.
+confident | 자신감 있는 | She looked confident during her speech.
+consider | 고려하다, 여기다 | Please consider my suggestion carefully.
+curious | 호기심 많은 | Children are curious about everything around them.
+decide | 결정하다 | We decided to go camping this weekend.
+depend | 의존하다, ~에 달려 있다 | Our plan depends on the weather.
+disappear | 사라지다 | The sun disappeared behind the clouds.
+effort | 노력 | Learning a language takes a lot of effort.
+encourage | 격려하다 | My coach always encourages us to do our best.
+environment | 환경 | We must protect the environment for the future.
+experience | 경험; 경험하다 | Traveling abroad was a great experience for me.
+explain | 설명하다 | Can you explain this math problem to me?
+familiar | 익숙한, 친숙한 | This song sounds familiar to me.
+fault | 잘못, 책임 | It's not your fault that the game was canceled.
+forgive | 용서하다 | Please forgive me for being late.
+gather | 모으다, 모이다 | People gathered in the park to watch the fireworks.
+honest | 정직한 | An honest person always tells the truth.
+imagine | 상상하다 | Can you imagine life without smartphones?
+improve | 향상시키다, 개선하다 | Reading every day will improve your English.
+include | 포함하다 | The price includes breakfast.
+independent | 독립적인 | I want to be independent from my parents someday.
+invent | 발명하다 | Who invented the telephone?
+jealous | 질투하는 | He was jealous of his brother's new bike.
+lack | 부족; 부족하다 | A lack of sleep can make you tired.
+manage | 관리하다, 간신히 해내다 | She managed to finish her homework before dinner.
+mistake | 실수 | Everyone makes mistakes when they learn something new.
+necessary | 필요한 | Water is necessary for all living things.
+opinion | 의견 | In my opinion, the movie was too long.
+patient | 참을성 있는; 환자 | Be patient. The bus will come soon.
+polite | 예의 바른 | It is polite to say thank you when someone helps you.
+prepare | 준비하다 | We are preparing for the school festival.
+protect | 보호하다 | Wear a helmet to protect your head.
+recently | 최근에 | I recently started learning the guitar.
+recognize | 알아보다 | I didn't recognize her with her new hairstyle.
+recycle | 재활용하다 | We should recycle plastic bottles and cans.
+regret | 후회하다; 후회 | I regret not studying harder last year.
+responsible | 책임 있는 | You are responsible for cleaning your own room.
+solve | 해결하다, 풀다 | Let's work together to solve this problem.
+survive | 살아남다 | Camels can survive for days without water.
+volunteer | 자원봉사하다; 자원봉사자 | She volunteers at the animal shelter every Saturday.
+waste | 낭비하다; 쓰레기 | Don't waste your time on useless things.`;
 
 function readJSON(key) {
   try {
@@ -126,7 +167,7 @@ function DeckEditor({ initialText, onSave, onCancel }) {
               {errors.length > 8 ? ' …' : ''})
             </span>
           )}
-          <button className="link-btn" onClick={() => setText(SAMPLE_TEXT)}>예시 10개 불러오기</button>
+          <button className="link-btn" onClick={() => setText(SAMPLE_TEXT)}>중3 예시 단어 50개 불러오기</button>
         </div>
         <div className="meta-left">
           {onCancel && <button className="btn btn-ghost" onClick={onCancel}>취소</button>}
@@ -326,7 +367,7 @@ export default function Flashcards() {
 
         {!loaded ? null : editing ? (
           <DeckEditor
-            initialText={deckText}
+            initialText={deckText || SAMPLE_TEXT}
             onSave={saveDeck}
             onCancel={cards.length ? () => setEditing(false) : null}
           />
