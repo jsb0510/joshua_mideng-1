@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import Link from 'next/link';
 
 const CIRCLED = ['①', '②', '③', '④', '⑤'];
 
@@ -316,7 +317,10 @@ export default function Home() {
         <header className="top">
           <span className="brand">출제노트</span>
           <span className="tagline">주제 한 줄로 고1 수준 영어 지문과 문항 4개를 만드는 도구</span>
-          <button className="link-btn no-print logout-btn" onClick={handleLogout}>
+          <Link href="/flashcards" className="link-btn no-print logout-btn">
+            단어 플립카드
+          </Link>
+          <button className="link-btn no-print" onClick={handleLogout}>
             로그아웃
           </button>
         </header>
