@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "k-skill": {
+      "source": {
+        "source": "github",
+        "repo": "NomaDamas/k-skill"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "k-skill@k-skill": true
+  }
+}
